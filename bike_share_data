@@ -3,3 +3,36 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 df = pd.read_csv('metro-bike-share-trip-data.csv')
+
+
+
+
+df["Trip ID"].int
+df["Duration"].int
+df["Start Time"].datetime
+df["End Time"].datetime
+df["Starting Station ID"].int
+df["Starting Station Latitude"].float
+df["Starting Station Longitude"].float
+df["Ending Station ID"].int
+df["Ending Station Latitude"].float
+df["Ending Station Longitude"].float
+df["Bike ID"].int
+df["Trip Route Category"].int
+df["Passholder Type"].str
+df[14].str
+df[15].str
+
+
+
+Trip.ID = df['Trip.ID']
+legend = ['Trip.ID', 'Duration']
+Duration = df['Duration']
+plt.hist([Trip.ID, Duration], color=['orange','green'])
+plt.xlabel("Trip ID")
+plt.ylabel("Duration")
+plt.legend(legend)
+plt.xticks(range(1912818, 23664826))
+plt.yticks(range(0,3000))
+plt.title('Duration for Bike Trip')
+plt.show()

@@ -1,0 +1,482 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Capital One Bike Data Analysis</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="main.css">
+    <!-- Custom styles for this template -->
+
+    <!-- First chart -->
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script type="text/javascript" src="charts.js"></script>
+
+
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <a class="navbar-brand" href="#">Bike Data Statistics</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#Graphs">Graphs<span class="sr-only">(current)</span></a>
+            </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#Popular">Popular Start/Stop Stations</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#Average">Average Biker Distance</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="#Regular">Regular Bikers</a>
+          </li>
+          <li class="nav-item">
+                <a class="nav-link " href="#Misc">Misc</a>
+          </li>
+        </ul>
+
+      </div>
+    </nav>
+
+    <main role="main">
+
+      <div class="jumbotron">
+        <div class="container">
+          <h1 class="display-3" class = "align-content-center">Bike Share Rider Data</h1>
+          <p>With bike shares becoming increasingly more common within the US, there are many benefits and lots of room for optimization for this unique market. <br>
+            Hopefully, along with my analysis of the data, I'll be able to provide you with more insight on bike shares!
+          </p>
+        </div>
+      </div>
+
+      <div class="container">
+          <hr>
+        <div class="row">
+          <div class="col-md-4">
+            <h2>Bike Stations</h2>
+            <p>There are over 65 bike stations set in just California! There are four major hubs for bikes, which includes: Downtown Los Angeles, Port of Los Angeles, the buzzing beach down of Venice, and Pasadena. </p>
+            <p><a class="btn btn-secondary" href="#Popular" role="button">View details &raquo;</a></p>
+          </div>
+          <div class="col-md-4">
+            <h2>Distance Traveled</h2>
+            <p>There has been over almost 50000 bike trips (exlcuding round trips), where bikers have traveled almost 350000 miles! That's practically traveling from California to the East Coast (New Jersey) back and forth 121 times! </p>
+            <p><a class="btn btn-secondary" href="#Average" role="button">View details &raquo;</a></p>
+          </div>
+          <div class="col-md-4">
+            <h2>Regular Bikers</h2>
+            <p>The number of Bike Stations and Distance Traveled would be nowhere without daily bike sharers. There has been around 130000 trips in general, using passes such as Staff Annuals, Monthly/Flex Passes, and even Walk-Ups!</p>
+            <p><a class="btn btn-secondary" href="#Regular" role="button">View details &raquo;</a></p>
+          </div>
+        </div>
+
+        <hr>
+
+      </div>
+    <div class = "container" id = "Graphs">
+            <h2 class = "align-content-center">
+                    Here Are Some <strong><u><em>Interesting Metrics </em></u></strong> I Found in the Dataset
+            </h2>
+    </div>
+    <div class= "jumbotron">
+      <div class = "container">
+            <div id="chartContainer1" style="width: 100%; height: 300px;display: inline-block;"></div> 
+        </div>
+    </div>
+    <div class = "jumbotron">
+        <div class = "container">
+            <div id="chartContainer2" style="height: 300px; width: 100%;"></div>
+        </div>
+    </div>
+
+    <div class = "jumbotron">
+        <div class = "container">
+                <div id="chartContainer3" style="height: 300px; width: 100%;"></div>
+        </div>
+    </div>
+
+    <!-- Popular Start/Stop Stations container -->
+    <div class = "container" id = "Popular">
+        <hr>
+            <div class = "row">
+                <div class = "col-md-6">
+                    <h3><u>Popular Start Stations</u></h3>
+                    <p>The most popular starting bike stations that bikers started their trips from are:
+                    <ol>
+                        <li>Station 3069 - Broadway & 3rd, with <b>5138</b> trips!</li>    
+                        <li>Station 3030 - Main & 1st, with <b>5059</b> trips!</li>
+                        <li>Station 3005 - 7th & Flower, with <b>4883</b> trips!</li>
+                        <li>Station 3064 - Grand & 7th, with <b>4661</b> trips!</li>
+                        <li>Station 3031 - 7th & Spring, with <b>4629</b>  trips!</li>
+                    </ol>
+                    </p>
+                </div>
+                 <div class = "col-md-6">
+                    <h3><u>Popular Ending Stations</u></h3>
+                    <p>The most popular ending bike stations that bikers ended their trips from are:
+                    <ol>
+                        <li>Station 3005 - 7th & Flower, with <b>6262</b> trips!</li>    
+                        <li>Station 3031 - 7th & Spring, with <b>5517</b> trips!</li>
+                        <li>Station 3014 - Union Station West Portal, with <b>5385</b> trips!</li>
+                        <li>Station 3042 - 1st & Central, with <b>5293</b> trips!</li>
+                        <li>Station 3069 - Broadway & 3rd, with <b>5072</b> trips!</li>
+                    </ol> 
+                    </p>
+                </div>
+            </div>
+
+            <!-- Start of carousel -->
+
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                      <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                      <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+                      <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
+                      <li data-target="#carouselExampleIndicators" data-slide-to="6"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                      <div class="carousel-item active">
+                        <img class="d-block w-100" src="https://lh3.googleusercontent.com/N0SlAlSYV-Qo8yTODLq5ceAWKjwF6TwPENb7z8LVjNHm5PE28Hh_8T-EdLMnVf3OvSkKJfedtxlIIbynhkN0OC0D1NFz-8r6U8Ud-e-7JGiu7siqriHejyMULRME64CiCmlI2EjS9w=w2400" alt="First slide">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h4>Most Popular Starting Station Number 1</h4>
+                                <p><b>AND</b></p>
+                                <h4>Most Popular Ending Station Number 5 </h4>
+                                <h5>Broadway & 3rd</h5>
+                                <p>Courtesy of Google Maps!</p>
+                            </div>
+                      </div>
+                      <div class="carousel-item">
+                        <img class="d-block w-100" src="https://lh3.googleusercontent.com/LfboRGo8jUSPiCL4Y1eqgF1S7KVeKXqv1CEsiXWRy_1aInWzw4P_T0ac2jsD-SmDkjBXCjcONJ9PmgNcknygSTQYc5-jpL35b3GDUo5Dr30XI5-AZR8VQZucIdbDMlzldYbPf25qpA=w2400" alt="Second slide">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h4>Most Popular Starting Station Number 2</h4>
+                                <h5>Main & 1st</h5>
+                                <p>Courtesy of Google Maps!</p>
+                            </div>
+                    </div>
+                        <div class="carousel-item">
+                        <img class="d-block w-100" src="https://lh3.googleusercontent.com/7JfcyD83CapV_9PTzRtdRlkWM2zMJONYfzlWb9dgHzDwgpURcVbmeermYjfQatrdsX10s5y5yr24Aj31L_5dONxiGa9B5Np4xTON6Z_EYMXSITDTibLtggj3EZG5-OBHsG89jxwhqw=w2400" alt="Third slide">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h4>Most Popular Starting Station Number 3 </h4>
+                                <p><b>AND</b></p>
+                                <h4>Most Popular Ending Station Number 1 </h4>
+                                <h5>7th & Flower</h5>
+                                <p>Courtesy of Google Maps!</p>
+                            </div>
+                        </div>
+
+                        <div class="carousel-item">
+                            <img class="d-block w-100" src="https://lh3.googleusercontent.com/zWc5e3IyveUxKdIqi9PGPvpiGp1Wi_IMXgL4r11X1l6RZ9adaeZBBjS7b5_X_h34hOl-0Vcr3Ytm3qoiVMo-efoV5TvZ1GdkcZ6EKyCpY-WBFNlX2Hn-9QM8Wz-UVtjbq1mseb3RiA=w2400" alt="Fourth slide">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h4>Most Popular Starting Station Number 4</h4>
+                                    <h5>Grand & 7th</h5>
+                                    <p>Courtesy of Google Maps!</p>
+                                    <p>(Could not find Bike Station!)</p>
+                                </div>
+                        </div>
+                        
+                        <div class="carousel-item">
+                                <img class="d-block w-100" src="https://lh3.googleusercontent.com/RsNTLDtgAUdGJcD98AvBSe4kK4jHxF62CAJ9uzAnNBN2hPn04PzkbplXgKRdUX0JMZqjGB1EgDYLr_9eKWwQaXVW1oU3Tf0PYfb39Ax49qte2Ksn7Avf5x610GmY_75NGyq3_8G58g=w2400" alt="Fifth slide">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h4>Most Popular Starting Station Number 5</h4>
+                                        <p><b>AND</b></p>
+                                        <h4>Most Popular Ending Station Number 2 </h4>
+                                        <h5>7th & Spring</h5>
+                                        <p>Courtesy of Google Maps!</p>
+                                    </div>
+                        </div>
+
+                        <div class="carousel-item">
+                                <img class="d-block w-100" src="https://lh3.googleusercontent.com/sPGbsmCzS2Hpf-jk7sv3qaETR42uMgENfOULzgQNwjmgc-R34_TSCfRm0IoUBVWBJS9Caw_N65jC2izgOkBAAOkSrvMXJrHPd39P8N4pD_k6TQahQDeBU1_58EEFM7VAqwdEj4zO5g=w2400" alt="Sixth slide">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h4>Most Popular Ending Station Number 3</h4>
+                                        <h5>Union Station West Portal</h5>
+                                        <p>Courtesy of Google Maps!</p>
+                                        <p>(Could not find Bike Station!)</p>
+                                    </div>
+                        </div>     
+                        
+                        <div class="carousel-item">
+                                <img class="d-block w-100" src="https://lh3.googleusercontent.com/Dy1DRgWdJvXSCcV5d6NgoCeRvRCM660buJ_AQ1WfUrToEK3uHQb1e5bZvNqE7ESeFgn_exYagoB3HkDZ_5oMFIkzJx-Tr7DlXkIK-6qnpP578qMs-f5l7s4sRFKlx8BQ7pGg_vkzMg=w2400" alt="Seventh slide">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h4>Most Popular Ending Station Number 4</h4>
+                                        <h5>1st & Central</h5>
+                                        <p>Courtesy of Google Maps!</p>
+                                    </div>
+                        </div>  
+                    
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Next</span>
+                    </a>
+                  </div>
+
+                <!-- End of carousel -->
+
+            <p class = "align-content-center">
+            It seems like <i>7th & Flower</i> and <i>7th & Spring</i> are <br>popular starting <b>AND</b> ending bike stations!
+            </p>
+    </div>
+    <!-- End of Popular Start/Stop Stations container -->
+
+    <!-- Start of Average Biker Distance -->
+    <div class = "container" id = "Average">
+        <hr>
+        <h3 class = "align-content-center"> <u>Average Biker Distance</u></h3>
+        <div class = "row">
+    
+                <div class = "col-md-6">
+                    <p>-As previously mentioned before, there have been almost over 50000 bike trips where the total distance traveled is almost 350000 miles! <br> 
+                    -To be exact, the calculated total distance is about 349188 miles. The calculated number of total trips is 49832 trips. <br>
+                    -Round trips were excluded from this data set due to round trips calculating total distance traveled as 0. <br>
+                    -This leaves us with the average distance a biker has traveled to be a little over 7 miles each!</p>
+                        
+                    <p><b>The total distance traveled is essentially going from New Jersey to Los Angeles 121 Times!</b></p>
+                    <p>There's a picture on the right, if you needed help visualizing that.</p>
+                </div>
+    
+                <div class = "col-md-6">
+                        <img class = "d-block w-100" src='https://lh3.googleusercontent.com/YKxZAxhL08APoRcGrfGKEBCELFMpfgd8dDEtNvpZ8iSh16PdzPB3BJBzp095yvVB4_gYHC5OnI6yDk9jmBrYmtFdp4Eo4WCke6QhVhmlgdB5nk5wy_va5Fg1kmpGFRt7iFTFzMLAqQ=w2400' alt ="Map from New Jersey to LA">
+                        <p class = align-content-center>Courtesy of Google Maps!</p>
+                </div>
+        </div>
+
+
+    </div>
+
+    <!-- End of Average Biker Distance -->
+
+    <!-- Start of Regular Part of Commute -->
+    <div class = "container" id = "Regular">
+        <hr>
+            <h3 class = "align-content-center"> <u>Regular Bikers</u></h3>
+            <p class = "align-content-center">The amount of regular bike riders that include bike sharing as a part of the commute is the number of bikers who purchase a pass. This is due to the fact that their ride is probably not a one time occurence. We can conclude that a rider would utilize their pass regularly during daily commutes.</p>
+            <div class = "row">
+                    <div class = "col-md-3 align-content-center">
+                        <h4>Monthly Pass Holders</h4>
+                        <p>Looking at our dataset, we were able to conclude that out of all the trips, 81304 of them held a monthly pass.</p>
+                    </div>
+
+                    <div class = "col-md-3 align-content-center">
+                        <h4>Walk-Up Trips</h4>
+                        <p>Looking at our dataset, we were able to conclude that out of all the trips, 41224 of them were walk-up trips.</p>    
+                    </div>
+
+                    <div class = "col-md-3 align-content-center">
+                        <h4>Flex Pass Holders</h4>
+                        <p>Looking at our dataset, we were able to conclude that out of all the trips, 9517 of them held a flex pass.</p>          
+                    </div>
+
+                    <div class = "col-md-3 align-content-center">
+                        <h4>Staff Annual Trips</h4>
+                        <p>Looking at our dataset, we were able to conclude that out of all the trips, 382 of them were members of the Staff Annual passes.</p>  
+                    </div>
+            </div>
+                <div class = "row">
+                    <div class = "col-md-6">
+                        <img class = "d-block w-100 align-content-center"  src = "http://g.recordit.co/bukezmvRDS.gif" alt = "Regular Bikers Calculation">
+                    </div>
+                    <div class = "col-md-6 align-content-center">
+                        <h4><u>Regular Bikers Calculation</u></h4>
+                        <p>To previously explain what I said before, I visualized the calculation for you. <br> 
+                            I thought I'd save you a couple of seconds checking if my calculation was <i>actually</i> right. <br>
+                            The way I calculated the number of Regular Biker trips was just by adding the number of <u><i>Monthly Passes</i></u> used on trips, the number of <u><i>Flex Passes</i></u> used on trips, and the number of <u><i>Staff Annual</i></u> trips. <br>
+                            Using this calculation, we can come to the conclusion that there were <b>91203</b> trips that included regular bike riders!
+                        </p>
+                    </div>
+                </div>
+        </div>
+
+    <!-- End of Regular Part of Commute -->
+
+    <!-- Beginning of Bonus Features -->
+
+    <!-- Start of Ridership Change with Seasons -->
+    <div class = "container" id = "Misc">
+        <hr>
+            <h2 class = "align-content-center">
+                    Now Here Are Some <strong><u><em>Much More Interesting Metrics </em></u></strong> I Found in the Dataset
+            </h2>
+            <h3 class = "align-content-center"><u>How does ridership change within the four seasons?</u></h3>
+            <div class = "row">
+                <div class = "col-md-3">
+                    <img class = "d-block w-100 align-content-center"  src = "https://lh3.googleusercontent.com/t3VMfwWXk5yLORDaLjt3Je_bS35C8lPgXBW0-W2m_ipgrPZUv53zA-kpi7UagmpQpFdMWOxAzs0Y1MWMWE9ym_hXrsNlbRVc4eaQiyQKar7LjWuh8Lwu7q4w5ZqvXPqAt975lCSZQA=w2400" alt = "Spring-Emoji">
+                <h5 class = "align-content-center"><u>Spring</u></h5>
+                <ul>
+                    <li>
+                        In the Spring time, the most common type of pass used are Monthly passes, amounting to <b>8451</b> used. <br>
+                    </li>
+                    <li>
+                        The next most common type of pass used are the Walk-Up passes, where <b>4432</b> of trips were Walk-Ups in the Spring! <br>
+                    </li>
+                    <li>
+                        Following Walk-Up passes, Flex passes were used <b>1023</b> times out of all the trips in the Spring!
+                    </li>
+                    <li>
+                        Lastly, there were <b>0</b> Staff Annual passes that were considered during the Spring time.
+                    </li>
+                    <li>
+                        The average Spring trip duration was around <b>30</b> minutes!
+                    </li>
+                </ul>    
+                </div>
+
+                <div class = "col-md-3">
+                    <img class = "d-block w-100 align-content-center"  src = "https://lh3.googleusercontent.com/VpCoCiAC6_wigruFnEa4ig1FUW45655dFasmKzhDfVyO5GO24fZgzIbXINs20JfxPA5GPX-GO2QvGRe0y6-vp7VxQacXeoHQo-33G27_rOKI2D62Tf4oOicyTcQRbDy6kWLZCnxPlA=w2400" alt = "Summer-Emoji">
+                <h5 class = "align-content-center"><u>Summer</u></h5>  
+                <ul>
+                        <li>
+                            In the Summer time, the most common type of pass used are Monthly passes, amounting to <b>22548</b> used. <br>
+                        </li>
+                        <li>
+                            The next most common type of pass used are the Walk-Up passes, where <b>9772</b> of trips were Walk-Ups in the Summer! <br>
+                        </li>
+                        <li>
+                            Following Walk-Up passes, Flex passes were used <b>3253</b> times out of all the trips in the Summer!
+                        </li>
+                        <li>
+                            Lastly, there were <b>0</b> Staff Annual passes that were considered during the Summer time.
+                        </li>
+                        <li>
+                            The average Summer trip duration was around <b>24</b> minutes!
+                        </li>
+                    </ul>    
+                </div>
+
+                <div class = "col-md-3">
+                    <img class = "d-block w-100 align-content-center"  src = "https://lh3.googleusercontent.com/bEUUydiZmlcL250Tyg1qw4dg37h2wFQulN_l4Deql-HCAnqEO7wppms1t84DrmFA53K6aFXJwPyxmD45G6dmdyoaX2EjwBS_yXhc83oOGBBGvZ11GFuvKMb75bQQkjtmgXWvmuesWA=s160-p-k" alt = "Fall-Emoji">
+                <h5 class = "align-content-center"><u>Fall</u></h5>
+                <ul>
+                        <li>
+                            In the Fall time, the most common type of pass used are Monthly passes, amounting to <b>30789</b> used. <br>
+                        </li>
+                        <li>
+                            The next most common type of pass used are the Walk-Up passes, where <b>18071</b> of trips were Walk-Ups in the Fall! <br>
+                        </li>
+                        <li>
+                            Following Walk-Up passes, Flex passes were used <b>3345</b> times out of all the trips in the Fall!
+                        </li>
+                        <li>
+                            Lastly, there were <b>250</b> Staff Annual passes that were considered during the Fall time.
+                        </li>
+                        <li>
+                            The average Fall trip duration was around <b>25</b> minutes!
+                        </li>
+                    </ul>    
+                </div>
+
+                <div class = "col-md-3">
+                    <img class = "d-block w-100 align-content-center"  src = "https://lh3.googleusercontent.com/iMo_X2HI9tW7BGuPteg4lhbpW5t9RefLB0DWtG6canhCwDsdBN0Az1XNmbfnW29zUQFYTmQxraTye06fG0UMT3lSDCXRLP79nBOaqXcFvArCd7RD51aXu387yJ4lt-sJbuSUM2OGpA=w2400" alt = "Winter-Emoji">
+                <h5 class = "align-content-center"><u>Winter</u></h5>
+                <ul>
+                        <li>
+                            In the Winter time, the most common type of pass used are Monthly passes, amounting to <b>19516</b> used. <br>
+                        </li>
+                        <li>
+                            The next most common type of pass used are the Walk-Up passes, where <b>8949</b> of trips were Walk-Ups in the Winter! <br>
+                        </li>
+                        <li>
+                            Following Walk-Up passes, Flex passes were used <b>1896</b> times out of all the trips in the Winter!
+                        </li>
+                        <li>
+                            Lastly, there were <b>132</b> Staff Annual passes that were considered during the Winter time.
+                        </li>
+                        <li>
+                            The average Winter trip duration was around <b>28</b> minutes!
+                        </li>
+                    </ul>    
+                </div>
+            
+            </div>
+            <p class = "align-content-center">Using this information, we can come to the conclusion that some seasons are more popular in some aspects than the others. <br> 
+            For example, in the Fall, Monthly passes are at the highest. Maybe we can try having a promotion during lower monthly pass frequency seasons like Spring. <br>
+            We also notice that Fall is just a popular season in general, where even Walk-Ups are at it's highest. <br>
+            Maybe the company can create group promotions to encourage more riders to come out and utilize bike sharing!
+            </p>
+    </div>
+    <!-- End of Ridership Change with Seasons -->
+
+    <!-- Start of  -->
+    <div class = "container">
+    <hr>
+        <h2 class = "align-content-center">
+            <u>Trip Route Category-Passholder Combinations</u>
+        </h2>
+        <p class = "align-content-center">
+            Depending on the type of trip (One-Way or Round Trip), there are trends that correlate alongside the type of pass used. <br>
+            From the data, we notice that <u>One-Way</u> trips are much more popular than <u>Round Trips</u>!
+        </p>
+        <div class = "row">
+            <div class = "col-md-6 align-content-center">
+                <h3>
+                    <u>Round Trips</u>   
+                </h3>
+                
+                <p>
+                    For Round Trips the following passes used counters are:
+                    <ol>
+                    <li>Monthly Passes Count - <b>3772</b></li>
+                    <li>Flex Passes Count - <b>483</b></li>
+                    <li>Staff Annual Passes Count - <b>83</b></li>
+                    <li>Walk-Up Passes Count - <b>0</b></li>
+                    </ol>
+                </p>
+            </div>
+            <div class = "col-md-6 align-content-center">
+                <h3>
+                    <u>One-Way Trips</u>
+                </h3>
+            <p>
+                For One-Way Trips the following passes used counters are:
+                <ol>
+                    <li>Monthly Passes Count - <b>77532</b></li>
+                    <li>Flex Passes Count - <b>9034</b></li>
+                    <li>Staff Annual Passes Count - <b>299</b></li>
+                    <li>Walk-Up Passes Count - <b>0</b></li>
+                </ol>
+            </p>
+            </div>
+
+        </div>
+        <p class = "align-content-center">
+            For Round Trips, we acknowledged that they are less popular than One-Way trips. This might be due to the fact that <br>
+            there are a ton of regular commuter bikers. This means that those commuter bikers are more likely to <br>
+            only go One-Way to work and One-Way back instead of going on a Round Trip.
+        </p>
+        <hr>
+    </div>
+
+    <!-- Ending of Bonus Features -->
+
+    </main>
+
+    <footer class="container">
+      <p>&copy; Matthew Tuazon, view the source code <a href = "https://github.com/Matthew-Tuazon/C1-MindSumo">here!</a></p>
+    </footer>
+
+    <!-- Bootstrap core JavaScript-->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  
+  </body>
+</html>
+

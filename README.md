@@ -24,3 +24,10 @@ Challenge: <a href = "https://www.mindsumo.com/contests/bikeshare-data">https://
 
 ## License
 This project is under the MIT License.
+
+# Screenshots
+
+![showcase](https://media.giphy.com/media/14NV5HpXBsjQjBF5OY/giphy.gif)
+![showcase](https://media.giphy.com/media/8UHS5TDUamP0jiu0ob/giphy.gif)
+![showcase](https://media.giphy.com/media/3CSGZpO16odpDUTC1Q/giphy.gif)
+![showcase](https://media.giphy.com/media/83d7jOqUNz0HQmZlpS/giphy.gif)
